@@ -1,0 +1,1098 @@
+/* ============================================================
+   Sorplos — corporate site
+   Tokens and components transcribed from "Sorplos Website.dc.html"
+   (artboard 01 / Token sheet is the source of truth for values).
+   ============================================================ */
+
+/* ---------- 01 · Tokens ---------- */
+
+:root {
+  /* Palette */
+  --ink:        #060B10; /* page base            */
+  --ink-raised: #0C141B; /* cards                */
+  --ink-hover:  #0E1820; /* card hover           */
+  --hairline:   #16222C; /* 1px borders only     */
+  --bone:       #E8EDF0; /* primary text         */
+  --muted:      #7C8F9B; /* secondary text       */
+  --eureka:     #4DE0C0; /* venture 01           */
+  --insure:     #F5A524; /* venture 02           */
+  --reserved:   #8B7CFF; /* held for venture 03  */
+
+  /* Type */
+  --font-display: 'Clash Display', ui-sans-serif, system-ui, sans-serif;
+  --font-body: 'Satoshi', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
+
+  /* Geometry */
+  --radius: 4px;
+  --radius-sm: 2px;
+  --shell: 1280px;
+  --gutter: 80px;
+  --header-h: 68px;
+
+  /* Surface */
+  --grain-opacity: 0.03;
+}
+
+/* ---------- 02 · Base ---------- */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; scroll-padding-top: calc(var(--header-h) + 16px); }
+
+body {
+  margin: 0;
+  background: var(--ink);
+  color: var(--bone);
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+a { color: var(--bone); text-decoration: none; }
+a:hover { color: var(--eureka); }
+
+h1, h2, h3, p { margin: 0; }
+button { font: inherit; }
+svg { display: block; }
+
+*:focus-visible { outline: 2px solid var(--eureka); outline-offset: 3px; }
+
+/* The hero's ambient glows are meant to bleed past the shell into the gutter.
+   Clipping here — on a full-viewport-width block — contains them at the window
+   edge instead of the content edge, so they never add horizontal scroll.
+   `clip` rather than `hidden`: it creates no scroll container. */
+main { overflow-x: clip; }
+
+.shell {
+  max-width: var(--shell);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+
+.rule { height: 1px; background: var(--hairline); }
+
+.visually-hidden {
+  position: absolute;
+  width: 1px; height: 1px;
+  margin: -1px; padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Film grain — one fixed overlay for the whole page, never interactive. */
+.grain {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  pointer-events: none;
+  opacity: var(--grain-opacity);
+  background-image: url('data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22140%22 height=%22140%22%3E%3Cfilter id=%22n%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.85%22 numOctaves=%223%22/%3E%3C/filter%3E%3Crect width=%22140%22 height=%22140%22 filter=%22url(%23n)%22/%3E%3C/svg%3E');
+}
+
+/* ---------- 03 · Type scale ---------- */
+
+.mono {
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  line-height: 1.4;
+}
+
+.eyebrow { color: var(--muted); }
+
+.display {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 68px;
+  line-height: 1.02;
+  letter-spacing: -0.03em;
+  color: var(--bone);
+  text-wrap: pretty;
+}
+
+.h2 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 44px;
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+  color: var(--bone);
+  text-wrap: pretty;
+}
+
+.h2--sm { font-size: 40px; }
+
+.h3 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 26px;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--bone);
+}
+
+.h3--lg { font-size: 32px; }
+
+.lede {
+  max-width: 600px;
+  font-size: 18px;
+  line-height: 1.6;
+  color: var(--muted);
+  text-wrap: pretty;
+}
+
+.body { font-size: 15px; line-height: 1.65; color: var(--muted); text-wrap: pretty; }
+
+/* Standalone statement paragraph — the "thesis" block between sections. */
+.statement {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 34px;
+  line-height: 1.28;
+  letter-spacing: -0.02em;
+  color: var(--bone);
+  text-wrap: pretty;
+}
+
+.statement--sm { font-size: 30px; line-height: 1.32; }
+
+/* ---------- 04 · Buttons, pills, arrows ---------- */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius);
+  padding: 14px 22px;
+  color: var(--bone);
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.btn--primary { border-color: var(--bone); background: var(--bone); color: var(--ink); }
+.btn--primary:hover { background: var(--eureka); border-color: var(--eureka); color: var(--ink); }
+
+.btn--ghost:hover { border-color: var(--eureka); color: var(--eureka); }
+
+/* Accent-filled button, used on a venture page where one colour owns the surface. */
+.btn--accent { border-color: var(--eureka); background: var(--eureka); color: var(--ink); }
+.btn--accent:hover { background: var(--ink); color: var(--eureka); }
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  border: 1px solid var(--hairline);
+  border-radius: 999px;
+  padding: 5px 11px;
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+.pill__dot { width: 5px; height: 5px; border-radius: 999px; background: currentColor; }
+
+.pill--live { border-color: rgba(77, 224, 192, 0.35); color: var(--eureka); }
+.pill--waitlist { border-color: rgba(245, 165, 36, 0.35); color: var(--insure); }
+.pill--reserved { border-style: dashed; border-color: rgba(139, 124, 255, 0.4); color: var(--reserved); }
+
+.pill--channel {
+  gap: 9px;
+  padding: 9px 16px;
+  border-color: rgba(77, 224, 192, 0.3);
+  color: var(--bone);
+}
+.pill--channel .pill__dot { background: var(--eureka); }
+
+.tags { display: flex; flex-wrap: wrap; gap: 8px; }
+
+.arrow-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--eureka);
+}
+
+/* ---------- 05 · Header ---------- */
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(6, 11, 16, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--hairline);
+}
+
+.header__bar {
+  height: var(--header-h);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.wordmark {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 19px;
+  letter-spacing: -0.02em;
+  color: var(--bone);
+}
+
+.wordmark:hover { color: var(--bone); }
+
+/* "Sorplos | Eureka" lockup on a venture page. */
+.lockup { display: flex; align-items: center; gap: 14px; }
+.lockup__divider { width: 1px; height: 16px; background: var(--hairline); }
+.lockup__venture { color: var(--eureka); }
+
+.nav { display: flex; align-items: center; gap: 32px; }
+.nav__link { color: var(--muted); transition: color 0.2s ease; }
+.nav__link:hover, .nav__link[aria-current='page'] { color: var(--bone); }
+
+/* Ventures dropdown */
+.nav__menu { position: relative; }
+
+.nav__trigger {
+  background: none;
+  border: 0;
+  padding: 10px 0; /* larger hit target, and shortens the gap to the panel */
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: var(--bone);
+}
+
+.nav__chevron { transition: transform 0.2s ease; }
+.nav__trigger[aria-expanded='true'] .nav__chevron { transform: rotate(180deg); }
+
+.nav__dropdown {
+  display: none;
+  position: absolute;
+  top: calc(100% + 6px);
+  left: -16px;
+  width: 236px;
+  background: var(--ink-raised);
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius);
+  padding: 6px;
+  flex-direction: column;
+}
+
+.nav__menu.is-open .nav__dropdown { display: flex; }
+
+/* Invisible bridge across the gap under the trigger. Without it the pointer
+   leaves .nav__menu on the way down and the panel closes before you reach it. */
+.nav__dropdown::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: 0;
+  right: 0;
+  height: 10px;
+}
+
+.nav__item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 11px 12px;
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  color: var(--bone);
+}
+
+.nav__item:hover { background: var(--ink); color: var(--bone); }
+
+.nav__item .dot { width: 5px; height: 5px; border-radius: 999px; flex: none; }
+.dot--eureka { background: var(--eureka); }
+.dot--insure { background: var(--insure); }
+.dot--reserved { border: 1px dashed var(--reserved); }
+
+.nav__status { margin-left: auto; color: var(--muted); }
+.nav__item--reserved { color: rgba(139, 124, 255, 0.5); cursor: default; }
+
+/* Mobile menu toggle — two bars, per the 390 artboard. */
+.menu-toggle {
+  display: none;
+  width: 44px;
+  height: 44px;
+  margin-right: -10px;
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 5px;
+}
+
+.menu-toggle span { display: block; height: 1px; background: var(--bone); }
+.menu-toggle span:first-child { width: 20px; }
+.menu-toggle span:last-child { width: 14px; }
+
+.mobile-nav { display: none; border-top: 1px solid var(--hairline); }
+.mobile-nav.is-open { display: block; }
+
+.mobile-nav__inner { padding: 12px 0 20px; display: flex; flex-direction: column; }
+
+.mobile-nav__link {
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--bone);
+  border-bottom: 1px solid var(--hairline);
+}
+
+.mobile-nav__link:last-child { border-bottom: 0; }
+.mobile-nav__status { margin-left: auto; color: var(--muted); }
+
+/* ---------- 06 · Hero ---------- */
+
+.hero { padding: 96px 0 88px; display: flex; flex-direction: column; gap: 76px; }
+.hero__copy { max-width: 760px; display: flex; flex-direction: column; gap: 26px; }
+.hero__actions { display: flex; gap: 12px; padding-top: 6px; }
+
+/* ---------- 07 · Spine diagram ---------- */
+
+.spine { position: relative; padding-top: 8px; }
+
+.spine__head { display: flex; align-items: center; }
+
+.spine__node {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  flex: none;
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius-sm);
+  background: var(--ink-raised);
+  padding: 9px 13px;
+  color: var(--bone);
+}
+
+.spine__node .dot { width: 5px; height: 5px; border-radius: 999px; background: var(--bone); }
+
+.spine__line {
+  position: relative;
+  flex: 1;
+  height: 1px;
+  background: var(--hairline);
+  transform-origin: left;
+  animation: sp-spine 0.55s ease-out 0.18s both;
+}
+
+/* Vertical rail — the same signal path, mobile orientation. */
+.spine__rail { display: none; }
+
+.pulse {
+  position: absolute;
+  top: -1px;
+  left: 0;
+  width: 3px;
+  height: 3px;
+  border-radius: 999px;
+  animation: sp-travel 18s linear var(--delay, 0s) infinite;
+}
+
+.pulse--eureka { background: var(--eureka); box-shadow: 0 0 8px 2px rgba(77, 224, 192, 0.55); }
+.pulse--insure { background: var(--insure); box-shadow: 0 0 8px 2px rgba(245, 165, 36, 0.55); }
+.pulse--reserved { background: var(--reserved); box-shadow: 0 0 8px 2px rgba(139, 124, 255, 0.45); }
+
+.spine__branches { display: grid; grid-template-columns: repeat(3, 1fr); }
+
+.branch {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  color: var(--hairline);
+  transition: color 0.2s ease;
+}
+
+.branch--eureka:hover { color: var(--eureka); }
+.branch--insure:hover { color: var(--insure); }
+.branch--reserved { color: var(--reserved); opacity: 0.32; }
+
+.branch__stem {
+  width: 1px;
+  height: 44px;
+  background: currentColor;
+  margin-left: 56px;
+  transform-origin: top;
+  animation: sp-branch 0.3s ease-out var(--delay, 0.6s) both;
+}
+
+.branch__card {
+  width: min(288px, 100%);
+  border: 1px solid currentColor;
+  border-radius: var(--radius);
+  background: var(--ink-raised);
+  padding: 18px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition: transform 0.2s ease, background 0.2s ease;
+  animation: sp-rise 0.5s ease-out var(--rise-delay, 0.9s) both;
+}
+
+/* The accent lives on the branch wrapper, so the card must not claim
+   the global link hover colour and light its own border the wrong shade. */
+.branch__card, .branch__card:hover { color: inherit; }
+.branch__card:hover { transform: translateY(-2px); background: var(--ink-hover); }
+
+.branch__head { display: flex; align-items: center; justify-content: space-between; }
+.branch__index { color: var(--muted); }
+.branch__name { font-family: var(--font-display); font-weight: 500; font-size: 26px; letter-spacing: -0.02em; color: var(--bone); }
+.branch__meta { color: var(--muted); }
+
+.branch__led { width: 6px; height: 6px; border-radius: 999px; flex: none; }
+.led--eureka { background: var(--eureka); box-shadow: 0 0 7px rgba(77, 224, 192, 0.6); }
+.led--insure { background: var(--insure); box-shadow: 0 0 7px rgba(245, 165, 36, 0.6); }
+.led--reserved { border: 1px dashed var(--reserved); }
+
+.branch--reserved .branch__card {
+  border: 1px dashed var(--reserved);
+  background: none;
+  min-height: 104px;
+}
+.branch--reserved .branch__index { color: var(--reserved); }
+.branch--reserved .branch__meta { margin-top: auto; color: var(--reserved); }
+
+/* ---------- 08 · Statement ---------- */
+
+.statement-block { padding: 104px 0; max-width: 940px; }
+
+/* ---------- 09 · Ventures ---------- */
+
+.section { padding: 96px 0; }
+
+.section__head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 24px;
+  padding-bottom: 44px;
+}
+
+.section__title { display: flex; flex-direction: column; gap: 14px; }
+
+/* auto-fit keeps 3 cards on one row at 1280 and pairs them into rows of two
+   from four cards up — the behaviour shown in the "four cards" variant. */
+.ventures {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+  gap: 24px;
+}
+
+.venture {
+  color: var(--hairline);
+  border: 1px solid currentColor;
+  border-radius: var(--radius);
+  background: var(--ink-raised);
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease;
+}
+
+.venture:hover { transform: translateY(-2px); background: var(--ink-hover); }
+
+.venture--eureka { border-top-color: var(--eureka); }
+.venture--eureka:hover { color: var(--eureka); border-top-color: var(--eureka); }
+
+.venture--insure { border-top-color: var(--insure); }
+.venture--insure:hover { color: var(--insure); border-top-color: var(--insure); }
+
+.venture__head { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.venture__index { color: var(--muted); }
+.venture__summary { margin-top: 8px; font-size: 17px; line-height: 1.5; color: var(--bone); }
+
+.venture__go {
+  margin-top: auto;
+  padding-top: 8px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.venture--eureka .venture__go { color: var(--eureka); }
+.venture--insure .venture__go { color: var(--insure); }
+
+.venture--reserved {
+  border: 1px dashed rgba(139, 124, 255, 0.32);
+  background: none;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-height: 260px;
+}
+
+.venture--reserved .venture__index { color: rgba(139, 124, 255, 0.55); }
+.venture--reserved .h3 { margin-top: auto; color: rgba(139, 124, 255, 0.5); }
+
+/* ---------- 10 · Shared spine (about) ---------- */
+
+.split { display: grid; grid-template-columns: 400px 1fr; gap: 80px; }
+.split__aside { display: flex; flex-direction: column; gap: 14px; }
+.split__body { display: flex; flex-direction: column; border-top: 1px solid var(--hairline); }
+
+.trait {
+  display: flex;
+  gap: 24px;
+  padding: 28px 0;
+  border-bottom: 1px solid var(--hairline);
+}
+
+.trait svg { flex: none; margin-top: 3px; }
+.trait__text { display: flex; flex-direction: column; gap: 7px; }
+.trait__title { font-size: 17px; color: var(--bone); }
+.trait__body { max-width: 620px; }
+
+/* ---------- 11 · Operating principles ---------- */
+
+/* 1px grid gaps on a hairline background draw the dividers. The offset from
+   the section label must be margin, not padding — padding would render the
+   hairline background as a solid slab above the first row. */
+.principles {
+  margin-top: 44px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--hairline);
+}
+
+.principle {
+  background: var(--ink);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 0 40px;
+}
+
+.principle:first-child { padding-left: 0; }
+.principle:last-child { padding-right: 0; }
+
+.principle__index--01 { color: var(--eureka); }
+.principle__index--02 { color: var(--insure); }
+.principle__index--03 { color: var(--reserved); }
+
+/* ---------- 12 · Partners ---------- */
+
+.partners { padding: 72px 0; display: flex; flex-direction: column; gap: 26px; }
+.partners__row { display: flex; flex-wrap: wrap; align-items: center; gap: 40px; }
+
+.partners__name {
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.partners__divider { width: 1px; height: 14px; background: var(--hairline); }
+
+/* ---------- 13 · Careers strip ---------- */
+
+.careers {
+  padding: 64px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.careers__line {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 30px;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--bone);
+  text-wrap: pretty;
+}
+
+.careers .arrow-link { flex: none; }
+
+/* ---------- 14 · Footer ---------- */
+
+.footer { border-top: 1px solid var(--hairline); background: var(--ink); }
+
+.footer__grid {
+  padding: 64px 0 40px;
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr 1fr;
+  gap: 40px;
+}
+
+.footer__col { display: flex; flex-direction: column; gap: 14px; }
+.footer__col a { font-size: 15px; }
+.footer__venture { display: flex; align-items: center; gap: 9px; }
+.footer__reserved { display: flex; align-items: center; gap: 9px; color: rgba(139, 124, 255, 0.5); }
+
+.footer__base { padding: 0 0 56px; }
+.footer__legal { padding-top: 24px; display: flex; justify-content: space-between; gap: 24px; }
+.footer__legal * { color: var(--muted); }
+
+/* Slim footer used on venture pages. */
+.footer--slim {
+  padding: 40px var(--gutter);
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+}
+.footer--slim * { color: var(--muted); }
+
+/* ---------- 15 · Venture page ---------- */
+
+.venture-hero {
+  position: relative;
+  border-top: 1px solid var(--eureka);
+  overflow: hidden;
+}
+
+.venture-hero__glow {
+  position: absolute;
+  top: -320px;
+  left: 14%;
+  width: 760px;
+  height: 640px;
+  pointer-events: none;
+  background: radial-gradient(circle, rgba(77, 224, 192, 0.16) 0%, rgba(77, 224, 192, 0.05) 38%, rgba(6, 11, 16, 0) 70%);
+}
+
+.venture-hero__inner {
+  position: relative;
+  padding: 88px 0 76px;
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+}
+
+.venture-hero__meta { display: flex; flex-wrap: wrap; align-items: center; gap: 14px; }
+.venture-hero__divider { width: 1px; height: 12px; background: var(--hairline); }
+
+.venture-hero__title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 80px;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: var(--bone);
+}
+
+.venture-hero__lede {
+  max-width: 720px;
+  font-size: 20px;
+  line-height: 1.55;
+  color: var(--bone);
+  text-wrap: pretty;
+}
+
+.capabilities {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--hairline);
+  border: 1px solid var(--hairline);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.capability {
+  background: var(--ink-raised);
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.capability__index { color: var(--eureka); }
+.capability__title { font-size: 17px; color: var(--bone); }
+
+.channels {
+  padding: 72px 0;
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 64px;
+  align-items: start;
+}
+
+.cta-band { position: relative; padding: 96px 0; overflow: hidden; }
+
+.cta-band__glow {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(ellipse at 30% 120%, rgba(77, 224, 192, 0.12) 0%, rgba(6, 11, 16, 0) 62%);
+}
+
+.cta-band__inner {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 48px;
+}
+
+.cta-band__copy { display: flex; flex-direction: column; gap: 16px; }
+
+.cta-band__line {
+  max-width: 640px;
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 44px;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  color: var(--bone);
+  text-wrap: pretty;
+}
+
+.cta-band .btn { flex: none; padding: 18px 26px; }
+
+.cross-links { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+
+.cross-link {
+  color: var(--hairline);
+  border: 1px solid currentColor;
+  border-top-color: var(--insure);
+  border-radius: var(--radius);
+  background: var(--ink-raised);
+  padding: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.cross-link:hover { color: var(--insure); transform: translateY(-2px); }
+.cross-link__text { display: flex; flex-direction: column; gap: 10px; }
+.cross-link svg { flex: none; }
+
+.cross-link--reserved {
+  border: 1px dashed rgba(139, 124, 255, 0.32);
+  background: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+}
+
+.cross-link--reserved .mono { color: rgba(139, 124, 255, 0.55); }
+.cross-link--reserved .h3 { color: rgba(139, 124, 255, 0.5); }
+
+/* ---------- 16 · Motion ---------- */
+
+@keyframes sp-spine    { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@keyframes sp-branch   { from { transform: scaleY(0); } to { transform: scaleY(1); } }
+@keyframes sp-branch-h { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@keyframes sp-rise     { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+
+@keyframes sp-travel {
+  0%   { opacity: 0; left: 0%; }
+  3%   { opacity: 1; }
+  26%  { opacity: 1; left: 100%; }
+  30%  { opacity: 0; left: 100%; }
+  100% { opacity: 0; left: 100%; }
+}
+
+@keyframes sp-travel-v {
+  0%   { opacity: 0; top: 0%; }
+  3%   { opacity: 1; }
+  26%  { opacity: 1; top: 100%; }
+  30%  { opacity: 0; top: 100%; }
+  100% { opacity: 0; top: 100%; }
+}
+
+.rise { animation: sp-rise 0.6s ease-out var(--delay, 0s) both; }
+
+/* ---------- 16b · Liveliness ---------- */
+
+/* Scroll reveals. The attribute is added by JS, so with JS off nothing is
+   ever hidden — content simply renders static. */
+[data-reveal] { opacity: 0; transform: translateY(14px); }
+
+[data-reveal].is-in {
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity 0.7s cubic-bezier(0.2, 0.6, 0.2, 1) var(--reveal-delay, 0s),
+    transform 0.7s cubic-bezier(0.2, 0.6, 0.2, 1) var(--reveal-delay, 0s);
+}
+
+/* A signal runs the length of each hairline as it comes into view — the spine
+   motif applied to every divider on the site. */
+.rule { position: relative; overflow: hidden; }
+
+.rule::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0; /* idle state — the sweep classes drive it */
+  background: linear-gradient(90deg,
+    transparent 0%,
+    rgba(77, 224, 192, 0) 30%,
+    rgba(77, 224, 192, 0.5) 50%,
+    rgba(77, 224, 192, 0) 70%,
+    transparent 100%);
+}
+
+/* Direction follows travel: scrolling down sweeps left to right, scrolling
+   back up sweeps right to left. JS toggles these, so the sweep replays each
+   time a divider comes back into view. */
+.rule.sweep-ltr::after { animation: sp-sweep-ltr 3.2s ease-in-out 0.1s 1; }
+.rule.sweep-rtl::after { animation: sp-sweep-rtl 3.2s ease-in-out 0.1s 1; }
+
+@keyframes sp-sweep-ltr {
+  0%   { opacity: 0; transform: translateX(-101%); }
+  12%  { opacity: 1; }
+  88%  { opacity: 1; }
+  100% { opacity: 0; transform: translateX(101%); }
+}
+
+@keyframes sp-sweep-rtl {
+  0%   { opacity: 0; transform: translateX(101%); }
+  12%  { opacity: 1; }
+  88%  { opacity: 1; }
+  100% { opacity: 0; transform: translateX(-101%); }
+}
+
+/* Status LEDs breathe, so a live venture never looks like a static screenshot. */
+@keyframes sp-breathe-eureka {
+  0%, 100% { box-shadow: 0 0 7px rgba(77, 224, 192, 0.55); }
+  50%      { box-shadow: 0 0 13px 2px rgba(77, 224, 192, 0.9); }
+}
+
+@keyframes sp-breathe-insure {
+  0%, 100% { box-shadow: 0 0 7px rgba(245, 165, 36, 0.55); }
+  50%      { box-shadow: 0 0 13px 2px rgba(245, 165, 36, 0.9); }
+}
+
+.led--eureka { animation: sp-breathe-eureka 3.4s ease-in-out infinite; }
+.led--insure { animation: sp-breathe-insure 3.4s ease-in-out 1.2s infinite; }
+.pill--live .pill__dot { animation: sp-breathe-eureka 3.4s ease-in-out infinite; }
+.pill--waitlist .pill__dot { animation: sp-breathe-insure 3.4s ease-in-out 1.2s infinite; }
+
+/* Ambient glow behind the hero. Two accents on one surface reads as the group. */
+.hero { position: relative; isolation: isolate; }
+.hero__copy, .hero .spine { position: relative; z-index: 1; }
+
+.hero::before,
+.hero::after {
+  content: '';
+  position: absolute;
+  z-index: 0;
+  pointer-events: none;
+  border-radius: 50%;
+}
+
+.hero::before {
+  top: -220px;
+  left: -180px;
+  width: 780px;
+  height: 620px;
+  background: radial-gradient(circle, rgba(77, 224, 192, 0.11) 0%, rgba(77, 224, 192, 0.035) 40%, transparent 70%);
+  animation: sp-drift-a 24s ease-in-out infinite alternate;
+}
+
+.hero::after {
+  top: 40px;
+  right: -260px;
+  width: 640px;
+  height: 540px;
+  background: radial-gradient(circle, rgba(245, 165, 36, 0.07) 0%, rgba(245, 165, 36, 0.02) 42%, transparent 70%);
+  animation: sp-drift-b 31s ease-in-out infinite alternate;
+}
+
+@keyframes sp-drift-a {
+  from { transform: translate3d(0, 0, 0) scale(1); }
+  to   { transform: translate3d(70px, 40px, 0) scale(1.14); }
+}
+
+@keyframes sp-drift-b {
+  from { transform: translate3d(0, 0, 0) scale(1.08); }
+  to   { transform: translate3d(-60px, 50px, 0) scale(1); }
+}
+
+/* Venture cards pick up their accent as a glow, not just a border. */
+.venture--eureka:hover { box-shadow: 0 20px 44px -28px rgba(77, 224, 192, 0.65); }
+.venture--insure:hover { box-shadow: 0 20px 44px -28px rgba(245, 165, 36, 0.65); }
+.branch--eureka .branch__card:hover { box-shadow: 0 16px 34px -24px rgba(77, 224, 192, 0.7); }
+.branch--insure .branch__card:hover { box-shadow: 0 16px 34px -24px rgba(245, 165, 36, 0.7); }
+
+/* ---------- 17 · Responsive ---------- */
+
+/* Tablet — keep the desktop composition, relax the fixed columns. */
+@media (max-width: 1080px) {
+  :root { --gutter: 48px; }
+
+  .display { font-size: 52px; }
+  .h2 { font-size: 38px; }
+  .h2--sm { font-size: 34px; }
+  .statement { font-size: 28px; }
+  .statement-block { padding: 80px 0; }
+  .section { padding: 72px 0; }
+
+  .spine__branches { grid-template-columns: repeat(3, 1fr); }
+  .branch__stem { margin-left: 32px; }
+
+  .split { grid-template-columns: 1fr; gap: 32px; }
+  .principles { grid-template-columns: 1fr; }
+  .principle { padding: 28px 0; }
+  .principle:first-child { padding-top: 0; }
+  .principle:last-child { padding-bottom: 0; }
+
+  .capabilities { grid-template-columns: repeat(2, 1fr); }
+  .channels { grid-template-columns: 1fr; gap: 20px; padding: 56px 0; }
+  .venture-hero__title { font-size: 60px; }
+  .cta-band__line { font-size: 34px; }
+  .cta-band__inner { flex-direction: column; align-items: flex-start; gap: 28px; }
+
+  .footer__grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+  .cross-links { grid-template-columns: 1fr; }
+}
+
+/* Mobile — the 390 artboard. */
+@media (max-width: 720px) {
+  :root { --gutter: 20px; --header-h: 58px; }
+
+  body { font-size: 16px; }
+
+  .nav { display: none; }
+  .menu-toggle { display: flex; }
+  .wordmark { font-size: 17px; }
+
+  .display { font-size: 36px; line-height: 1.06; }
+  .lede { font-size: 16px; }
+  .h2 { font-size: 30px; }
+  .h2--sm { font-size: 28px; }
+  .h3--lg { font-size: 26px; }
+  .statement, .statement--sm { font-size: 23px; line-height: 1.3; }
+
+  /* Smaller glows, so the clip at the window edge lands where they are faint. */
+  .hero::before { top: -150px; left: -170px; width: 460px; height: 420px; }
+  .hero::after { top: 120px; right: -190px; width: 400px; height: 360px; }
+
+  .hero { padding: 36px 0 8px; gap: 44px; }
+  .hero__copy { gap: 20px; }
+  .hero__actions { flex-direction: column; }
+  .btn { justify-content: center; padding: 15px 20px; }
+
+  .statement-block { padding: 44px 0; }
+  .section { padding: 44px 0; }
+  .section__head { flex-direction: column; align-items: flex-start; gap: 14px; padding-bottom: 24px; }
+  .section__head > .mono:last-child { display: none; }
+
+  /* Spine rotates onto a vertical rail. */
+  .spine { padding: 8px 0 44px; }
+  .spine__line { display: none; }
+
+  /* Left padding clears the rail so each connector starts at it, not through it. */
+  .spine__branches {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 20px 0 20px 23px;
+  }
+
+  .spine__rail {
+    display: block;
+    position: absolute;
+    left: 22px;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: var(--hairline);
+    transform-origin: top;
+    animation: sp-branch 0.6s ease-out 0.2s both;
+  }
+
+  .spine__rail .pulse { left: -1px; top: 0; animation-name: sp-travel-v; }
+
+  .branch { flex-direction: row; align-items: center; }
+
+  .branch__stem {
+    width: 28px;
+    height: 1px;
+    margin-left: 0;
+    transform-origin: left;
+    animation-name: sp-branch-h;
+  }
+
+  .branch__card { width: auto; flex: 1; padding: 16px; }
+  .branch__name { font-size: 22px; }
+  .branch--reserved .branch__card { flex-direction: row; align-items: center; justify-content: space-between; min-height: 0; }
+  .branch--reserved .branch__head { flex: 1; }
+  .branch--reserved .branch__meta { margin-top: 0; }
+
+  .ventures { grid-template-columns: 1fr; gap: 16px; }
+  .venture { padding: 22px; gap: 14px; }
+  .venture--reserved { min-height: 0; padding: 22px; flex-direction: row; align-items: center; justify-content: space-between; }
+  .venture--reserved .h3 { margin-top: 0; font-size: 20px; }
+  .venture--reserved .venture__index { order: 2; }
+  .venture--reserved .body { display: none; }
+  .venture__go { min-height: 44px; padding-top: 0; }
+
+  .trait { gap: 16px; padding: 20px 0; }
+  .trait__title { font-size: 16px; }
+
+  .partners { padding: 44px 0; gap: 12px; }
+  .partners__row { gap: 8px 20px; }
+  .partners__name { font-size: 12px; }
+  .partners__divider { display: none; }
+
+  .careers { flex-direction: column; align-items: flex-start; gap: 16px; padding: 36px 0; }
+  .careers__line { font-size: 22px; }
+  .careers .arrow-link { min-height: 44px; }
+
+  .footer__grid { grid-template-columns: 1fr; gap: 28px; padding: 36px 0 24px; }
+  .footer__base { padding-bottom: 40px; }
+  .footer__legal { flex-direction: column; gap: 10px; }
+  .footer--slim { flex-direction: column; gap: 10px; padding: 32px var(--gutter) 40px; }
+
+  .venture-hero__inner { padding: 40px 0 44px; gap: 20px; }
+  .venture-hero__title { font-size: 44px; }
+  .venture-hero__lede { font-size: 17px; }
+  .venture-hero__glow { left: -20%; width: 520px; }
+  .capabilities { grid-template-columns: 1fr; }
+  .capability { padding: 22px; }
+  .cta-band { padding: 44px 0; }
+  .cta-band__line { font-size: 26px; }
+  .cross-link { padding: 22px; }
+}
+
+/* ---------- 18 · Reduced motion ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+
+  *, *::before, *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  /* Entrance animations use both to hold their start frame — release them. */
+  .rise, .spine__line, .spine__rail, .branch__stem, .branch__card,
+  [data-reveal], [data-reveal].is-in {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .pulse { display: none; }
+  .rule::after, .hero::before, .hero::after { display: none; }
+}

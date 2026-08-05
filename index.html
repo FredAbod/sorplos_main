@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sorplos — One company. Several ways to move money, and protect it.</title>
+<meta name="description" content="Sorplos builds and operates Eureka, conversational AI banking for Nigerian bank accounts, and Sorplos Insure, insurance distribution from licensed Nigerian underwriters.">
+<meta name="theme-color" content="#060B10">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Sorplos">
+<meta property="og:title" content="Sorplos — One company. Several ways to move money, and protect it.">
+<meta property="og:description" content="Sorplos builds and operates Eureka, conversational AI banking, and Sorplos Insure, insurance distribution from licensed Nigerian underwriters. Lagos, Nigeria.">
+
+<link rel="preconnect" href="https://api.fontshare.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://api.fontshare.com/v2/css?f[]=clash-display@500,600&f[]=satoshi@400,500,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/site.css">
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+
+<header class="header">
+  <div class="shell header__bar">
+    <a class="wordmark" href="#top">Sorplos</a>
+
+    <nav class="nav" aria-label="Primary">
+      <div class="nav__menu" data-nav-menu>
+        <button class="nav__trigger mono" type="button" aria-expanded="false" aria-controls="ventures-menu" data-nav-trigger>
+          Ventures
+          <svg class="nav__chevron" width="9" height="6" viewBox="0 0 9 6" fill="none" aria-hidden="true"><path d="M1 1.5 4.5 4.5 8 1.5" stroke="#7C8F9B" stroke-width="1"/></svg>
+        </button>
+        <div class="nav__dropdown" id="ventures-menu">
+          <a class="nav__item" href="ventures/eureka.html">
+            <span class="dot dot--eureka"></span>Eureka
+            <span class="nav__status mono">Live</span>
+          </a>
+          <a class="nav__item" href="#insure">
+            <span class="dot dot--insure"></span>Sorplos Insure
+            <span class="nav__status mono">Soon</span>
+          </a>
+          <div class="nav__item nav__item--reserved mono">
+            <span class="dot dot--reserved"></span>Reserved
+          </div>
+        </div>
+      </div>
+
+      <a class="nav__link mono" href="#spine">About</a>
+      <a class="nav__link mono" href="#careers">Careers</a>
+      <a class="nav__link mono" href="#footer">Contact</a>
+    </nav>
+
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-nav" aria-label="Open menu" data-menu-toggle>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+
+  <nav class="mobile-nav" id="mobile-nav" aria-label="Primary, mobile" data-mobile-nav>
+    <div class="shell mobile-nav__inner">
+      <a class="mobile-nav__link" href="ventures/eureka.html">
+        <span class="dot dot--eureka"></span>Eureka
+        <span class="mobile-nav__status mono">Live</span>
+      </a>
+      <a class="mobile-nav__link" href="#insure">
+        <span class="dot dot--insure"></span>Sorplos Insure
+        <span class="mobile-nav__status mono">Soon</span>
+      </a>
+      <a class="mobile-nav__link mono" href="#spine">About</a>
+      <a class="mobile-nav__link mono" href="#careers">Careers</a>
+      <a class="mobile-nav__link mono" href="#footer">Contact</a>
+    </div>
+  </nav>
+</header>
+
+<main id="top">
+  <div class="shell">
+
+    <!-- Hero + spine diagram -->
+    <section class="hero">
+      <div class="hero__copy">
+        <span class="mono eyebrow rise">Sorplos · Lagos, Nigeria</span>
+        <h1 class="display rise" style="--delay:0.08s">One company. Several ways to move money — and protect it.</h1>
+        <p class="lede rise" style="--delay:0.16s">Sorplos builds and operates Eureka, conversational AI banking for Nigerian bank accounts, and Sorplos Insure, insurance distribution from licensed Nigerian underwriters.</p>
+        <div class="hero__actions rise" style="--delay:0.24s">
+          <a class="btn btn--primary mono" href="#ventures">See what we build</a>
+          <a class="btn btn--ghost mono" href="#careers">Work with us</a>
+        </div>
+      </div>
+
+      <!-- The group as a signal path: parent on the spine, ventures on branches. -->
+      <div class="spine" aria-hidden="true">
+        <div class="spine__head">
+          <span class="spine__node mono rise">
+            <span class="dot"></span>Sorplos
+          </span>
+          <div class="spine__line">
+            <i class="pulse pulse--eureka" style="--delay:2s"></i>
+            <i class="pulse pulse--insure" style="--delay:8s"></i>
+            <i class="pulse pulse--reserved" style="--delay:14s"></i>
+          </div>
+        </div>
+
+        <div class="spine__branches">
+          <div class="spine__rail">
+            <i class="pulse pulse--eureka" style="--delay:2s"></i>
+            <i class="pulse pulse--insure" style="--delay:8s"></i>
+          </div>
+
+          <div class="branch branch--eureka">
+            <div class="branch__stem" style="--delay:0.62s"></div>
+            <a class="branch__card" href="ventures/eureka.html" tabindex="-1">
+              <div class="branch__head">
+                <span class="branch__index mono">01</span>
+                <span class="branch__led led--eureka"></span>
+              </div>
+              <span class="branch__name">Eureka</span>
+              <span class="branch__meta mono">Banking &amp; payments</span>
+            </a>
+          </div>
+
+          <div class="branch branch--insure">
+            <div class="branch__stem" style="--delay:0.71s"></div>
+            <a class="branch__card" href="#insure" style="--rise-delay:1.01s" tabindex="-1">
+              <div class="branch__head">
+                <span class="branch__index mono">02</span>
+                <span class="branch__led led--insure"></span>
+              </div>
+              <span class="branch__name">Sorplos Insure</span>
+              <span class="branch__meta mono">Insurance</span>
+            </a>
+          </div>
+
+          <div class="branch branch--reserved">
+            <div class="branch__stem" style="--delay:0.8s"></div>
+            <div class="branch__card" style="--rise-delay:1.1s">
+              <div class="branch__head">
+                <span class="branch__index mono">03</span>
+                <span class="branch__led led--reserved"></span>
+              </div>
+              <span class="branch__meta mono">Reserved</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="rule"></div>
+
+    <!-- Thesis -->
+    <section class="statement-block">
+      <p class="statement">Nigerians hold money in several banks and buy cover from several insurers, but the tools for both are built as if each account existed alone. Sorplos builds products that read across those institutions and speak to people on the channels they already use. One company operates them, so identity, payments and confirmation work the same way in each.</p>
+    </section>
+
+    <div class="rule"></div>
+
+    <!-- Ventures -->
+    <section class="section" id="ventures">
+      <div class="section__head">
+        <div class="section__title">
+          <span class="mono eyebrow">Ventures · 02 live and building</span>
+          <h2 class="h2">What we build</h2>
+        </div>
+        <span class="mono eyebrow">01 — 03</span>
+      </div>
+
+      <div class="ventures">
+        <a class="venture venture--eureka" id="eureka" href="ventures/eureka.html">
+          <div class="venture__head">
+            <span class="venture__index mono">01 · Banking &amp; payments</span>
+            <span class="pill pill--live mono"><span class="pill__dot"></span>Live</span>
+          </div>
+          <div>
+            <h3 class="h3 h3--lg">Eureka</h3>
+            <p class="venture__summary">Conversational AI banking on web and WhatsApp.</p>
+          </div>
+          <p class="body">Link your Nigerian bank accounts to check balances across all of them, review transactions and see spending and budget insights. Buy airtime and data, pay bills and request transfers — nothing sensitive happens without explicit confirmation first.</p>
+          <div class="tags">
+            <span class="pill mono">Web app</span>
+            <span class="pill mono">WhatsApp</span>
+          </div>
+          <span class="venture__go mono">eureka.sorplos.com
+            <svg width="14" height="10" viewBox="0 0 14 10" fill="none" aria-hidden="true"><path d="M0 5h12M8.5 1.5 12 5l-3.5 3.5" stroke="currentColor" stroke-width="1"/></svg>
+          </span>
+        </a>
+
+        <a class="venture venture--insure" id="insure" href="https://insure.sorplos.com">
+          <div class="venture__head">
+            <span class="venture__index mono">02 · Insurance</span>
+            <span class="pill pill--waitlist mono"><span class="pill__dot"></span>Waitlist</span>
+          </div>
+          <div>
+            <h3 class="h3 h3--lg">Sorplos Insure</h3>
+            <p class="venture__summary">Insurance distribution for Nigeria.</p>
+          </div>
+          <p class="body">Verify with BVN or NIN, then compare motor, life, health and general cover from multiple licensed Nigerian insurers side by side and pay by card, transfer or USSD. A verifiable digital policy certificate reaches your phone the moment payment confirms.</p>
+          <div class="tags">
+            <span class="pill mono">Web</span>
+            <span class="pill mono">WhatsApp</span>
+            <span class="pill mono">USSD</span>
+            <span class="pill mono">Agents</span>
+          </div>
+          <span class="venture__go mono">insure.sorplos.com
+            <svg width="14" height="10" viewBox="0 0 14 10" fill="none" aria-hidden="true"><path d="M0 5h12M8.5 1.5 12 5l-3.5 3.5" stroke="currentColor" stroke-width="1"/></svg>
+          </span>
+        </a>
+
+        <div class="venture--reserved">
+          <span class="venture__index mono">03</span>
+          <h3 class="h3">Reserved</h3>
+          <p class="body">A slot held for the next venture.</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="rule"></div>
+
+    <!-- Shared spine -->
+    <section class="section split" id="spine">
+      <div class="split__aside">
+        <span class="mono eyebrow">The shared spine</span>
+        <h2 class="h2 h2--sm">Why one company builds both</h2>
+      </div>
+
+      <div class="split__body">
+        <div class="trait">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true"><circle cx="11" cy="8" r="3.5" stroke="#7C8F9B" stroke-width="1"/><path d="M4 19c1.6-3.4 4-5 7-5s5.4 1.6 7 5" stroke="#7C8F9B" stroke-width="1"/></svg>
+          <div class="trait__text">
+            <span class="trait__title">Verified Nigerian identity</span>
+            <p class="body trait__body">Every product starts from BVN or NIN verification, so a person is the same person across the group.</p>
+          </div>
+        </div>
+
+        <div class="trait">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true"><path d="M3 6h16M3 11h16M3 16h16" stroke="#7C8F9B" stroke-width="1"/><circle cx="7" cy="6" r="1.6" fill="#060B10" stroke="#7C8F9B" stroke-width="1"/><circle cx="14" cy="16" r="1.6" fill="#060B10" stroke="#7C8F9B" stroke-width="1"/></svg>
+          <div class="trait__text">
+            <span class="trait__title">Direct integration with local rails</span>
+            <p class="body trait__body">We connect to Nigerian payment rails and licensed institutions directly rather than reselling someone else's connection.</p>
+          </div>
+        </div>
+
+        <div class="trait">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true"><rect x="3" y="4" width="12" height="11" stroke="#7C8F9B" stroke-width="1"/><path d="M6 19h13M6 15v4" stroke="#7C8F9B" stroke-width="1"/></svg>
+          <div class="trait__text">
+            <span class="trait__title">Interfaces that work where people are</span>
+            <p class="body trait__body">WhatsApp and USSD are first-class channels, not fallbacks bolted onto an app.</p>
+          </div>
+        </div>
+
+        <div class="trait">
+          <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true"><path d="M11 3l7 3v5c0 4-3 7-7 8-4-1-7-4-7-8V6l7-3Z" stroke="#7C8F9B" stroke-width="1"/><path d="M8 11l2.2 2.2L14.5 9" stroke="#7C8F9B" stroke-width="1"/></svg>
+          <div class="trait__text">
+            <span class="trait__title">Confirmation before any consequential action</span>
+            <p class="body trait__body">Money moves and policies issue only after the person has read what will happen and said yes.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="rule"></div>
+
+    <!-- Operating principles -->
+    <section class="section">
+      <span class="mono eyebrow">Operating principles</span>
+      <div class="principles">
+        <div class="principle">
+          <span class="mono principle__index--01">P/01</span>
+          <h3 class="h3">Regulated before launched</h3>
+          <p class="body">A product goes out when the licensing and institutional partnerships behind it are in place, not when the interface is ready. Sorplos Insure distributes cover from NAICOM-licensed underwriters.</p>
+        </div>
+        <div class="principle">
+          <span class="mono principle__index--02">P/02</span>
+          <h3 class="h3">Works on a feature phone</h3>
+          <p class="body">If a service only works on a recent smartphone with good data, it excludes most of the country. WhatsApp and USSD carry the same core actions as the web app.</p>
+        </div>
+        <div class="principle">
+          <span class="mono principle__index--03">P/03</span>
+          <h3 class="h3">Confirmation before consequence</h3>
+          <p class="body">Anything that moves money or binds a policy is restated in plain language and waits for an explicit yes. Nothing consequential is inferred from a conversation.</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="rule"></div>
+
+    <!-- Infrastructure -->
+    <section class="partners">
+      <span class="mono eyebrow">Infrastructure &amp; partners</span>
+      <div class="partners__row">
+        <span class="partners__name">Mono</span>
+        <span class="partners__divider"></span>
+        <span class="partners__name">NIBSS</span>
+        <span class="partners__divider"></span>
+        <span class="partners__name">Paystack</span>
+        <span class="partners__divider"></span>
+        <span class="partners__name">Flutterwave</span>
+        <span class="partners__divider"></span>
+        <span class="partners__name">NAICOM-licensed underwriters</span>
+      </div>
+    </section>
+
+    <div class="rule"></div>
+
+    <!-- Careers -->
+    <section class="careers" id="careers">
+      <p class="careers__line">We are hiring engineers, insurance operators and agents in Lagos.</p>
+      <a class="arrow-link mono" href="mailto:hello@sorplos.com?subject=Open%20roles">Open roles
+        <svg width="14" height="10" viewBox="0 0 14 10" fill="none" aria-hidden="true"><path d="M0 5h12M8.5 1.5 12 5l-3.5 3.5" stroke="currentColor" stroke-width="1"/></svg>
+      </a>
+    </section>
+
+  </div>
+</main>
+
+<footer class="footer" id="footer">
+  <div class="shell footer__grid">
+    <div class="footer__col">
+      <span class="wordmark">Sorplos</span>
+      <span class="mono eyebrow">Lagos, Nigeria</span>
+    </div>
+
+    <div class="footer__col">
+      <span class="mono eyebrow">Ventures</span>
+      <a class="footer__venture" href="ventures/eureka.html"><span class="dot dot--eureka"></span>Eureka</a>
+      <a class="footer__venture" href="https://insure.sorplos.com"><span class="dot dot--insure"></span>Sorplos Insure</a>
+      <span class="footer__reserved mono"><span class="dot dot--reserved"></span>Reserved</span>
+    </div>
+
+    <div class="footer__col">
+      <span class="mono eyebrow">Company</span>
+      <a href="#spine">About</a>
+      <a href="#careers">Careers</a>
+      <a href="mailto:hello@sorplos.com">Contact</a>
+    </div>
+
+    <div class="footer__col">
+      <span class="mono eyebrow">Legal</span>
+      <a href="#footer">Privacy</a>
+      <a href="#footer">Terms</a>
+      <a href="#footer">Complaints</a>
+    </div>
+  </div>
+
+  <div class="shell footer__base">
+    <div class="rule"></div>
+    <div class="footer__legal">
+      <span class="mono">© Sorplos Nigeria Limited (RC 9598821)</span>
+      <a class="mono" href="mailto:hello@sorplos.com">hello@sorplos.com</a>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/site.js" defer></script>
+</body>
+</html>
